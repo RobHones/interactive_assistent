@@ -9,6 +9,8 @@ default = []
 # Enables real llama.cpp FFI via `llama-cpp-2`. Requires a C++ toolchain
 # (MSVC on Windows, clang on macOS, gcc on Linux) and CMake at build time.
 local-llm = ["dep:llama-cpp-2", "dep:encoding_rs", "tokio/sync"]
+# GPU offload via Vulkan. Requires the Vulkan SDK (`VULKAN_SDK` set) at build time.
+vulkan = ["local-llm", "llama-cpp-2/vulkan"]
 
 [dependencies]
 tokio.workspace = true

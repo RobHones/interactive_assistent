@@ -948,7 +948,7 @@ dependencies = [
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
- "windows 0.61.3",
+ "windows 0.62.2",
 ]
 
 [[package]]
@@ -2518,7 +2518,7 @@ dependencies = [
  "js-sys",
  "log",
  "wasm-bindgen",
- "windows-core 0.61.2",
+ "windows-core 0.62.2",
 ]
 
 [[package]]
@@ -2981,7 +2981,7 @@ dependencies = [
  "serde_json",
  "sha2 0.10.9",
  "sys-locale",
- "sysinfo",
+ "sysinfo 0.38.4",
  "tauri",
  "tauri-build",
  "tauri-plugin-dialog",
@@ -3024,7 +3024,7 @@ dependencies = [
  "image",
  "serde",
  "serde_json",
- "sysinfo",
+ "sysinfo 0.39.1",
  "thiserror 2.0.18",
  "tracing",
  "winapi",
@@ -5971,6 +5971,20 @@ dependencies = [
 
 [[package]]
 name = "sysinfo"
+version = "0.38.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "92ab6a2f8bfe508deb3c6406578252e491d299cbbf3bc0529ecc3313aee4a52f"
+dependencies = [
+ "libc",
+ "memchr",
+ "ntapi",
+ "objc2-core-foundation",
+ "objc2-io-kit",
+ "windows 0.62.2",
+]
+
+[[package]]
+name = "sysinfo"
 version = "0.39.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a4deba334e1190ba7cb498327affa11e5ece10d26a30ab2f27fcf09504b8d8b6"
@@ -7637,6 +7651,7 @@ version = "0.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2088172d00f936c348d6a72f488dc2660ab3f507263a195df308a3c2383229f6"
 dependencies = [
+ "libc",
  "whisper-rs-sys",
 ]
 

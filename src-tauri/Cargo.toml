@@ -94,6 +94,8 @@ local-llm = ["komorebi-llm/local-llm"]
 stt = ["komorebi-voice/stt"]
 # Convenience umbrella: everything that ships in the full release binary.
 full = ["local-llm", "stt"]
+# `full` plus Vulkan GPU offload for llama.cpp and whisper.cpp.
+full-vulkan = ["full", "komorebi-llm/vulkan", "komorebi-voice/vulkan"]
 
 [profile.release]
 codegen-units = 1
