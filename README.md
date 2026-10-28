@@ -683,6 +683,7 @@ file I/O is rooted at `desktop_workspace_root` (default
 | pnpm | 10 |
 | Tauri 2 toolchain | per [tauri.app/start/prerequisites](https://tauri.app/start/prerequisites/) |
 | (Optional) CMake + LLVM | required for `local-llm` and `stt` features |
+| (Optional) [Vulkan SDK](https://vulkan.lunarg.com/sdk/home) | required for the `full-vulkan` feature (GPU offload) |
 
 ### Clone & run
 
@@ -699,6 +700,17 @@ pnpm tauri dev
 # full feature build (local llama.cpp + bundled whisper.cpp)
 pnpm tauri dev -- --features full
 
+# same, with Vulkan GPU offload (needs the Vulkan SDK; VULKAN_SDK must be set)
+pnpm tauri dev -- --features full-vulkan
+```
+
+> **Windows + `full-vulkan`:** build from a *Developer PowerShell for VS*
+> with `CMAKE_GENERATOR=Ninja` (the Visual Studio generator mis-orders the
+> `vulkan-shaders-gen` sub-build), `LIBCLANG_PATH` pointing at LLVM's `bin`,
+> and a short `CARGO_TARGET_DIR` (e.g. `C:\kt`) — the nested shader build
+> otherwise exceeds the 260-char path limit.
+
+```bash
 # typecheck only
 pnpm typecheck
 
@@ -727,6 +739,7 @@ default   = []
 local-llm = ["komorebi-llm/local-llm"]    # llama.cpp via llama-cpp-2 (CMake)
 stt       = ["komorebi-voice/stt"]        # bundled whisper.cpp via whisper-rs (CMake)
 full      = ["local-llm", "stt"]          # ship everything (used by release.yml)
+full-vulkan = ["full", "komorebi-llm/vulkan", "komorebi-voice/vulkan"]  # + Vulkan GPU offload
 ```
 
 | Profile | Use case |

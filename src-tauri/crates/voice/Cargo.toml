@@ -8,6 +8,8 @@ license.workspace = true
 default = []
 # Enables real Whisper.cpp STT via `whisper-rs`. Requires CMake + a C++ toolchain.
 stt = ["dep:whisper-rs", "dep:num_cpus"]
+# GPU-accelerated Whisper via Vulkan. Requires the Vulkan SDK (`VULKAN_SDK` set) at build time.
+vulkan = ["stt", "whisper-rs/vulkan"]
 
 [dependencies]
 tokio = { workspace = true, features = ["process", "io-util", "sync", "rt", "macros"] }
